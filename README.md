@@ -1,3 +1,9 @@
-```
-composer create-project symfony/skeleton:~3.3
+# Staking Prototype
+
+```bash
+> brew install node yarn make
+> composer install
+> yarn install
+> make assets
+> make serve
 ```
