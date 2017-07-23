@@ -1,4 +1,4 @@
-var Encore = require('@symfony/webpack-encore');
+let Encore = require('@symfony/webpack-encore');
 
 Encore
     // directory where all compiled assets will be stored
@@ -21,13 +21,6 @@ Encore
 
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()
-
-    // This disables the resolve-url-loader in Webpack, which means that any url() paths in
-    // your Sass files must now be relative to the original source entry file instead of
-    // whatever file you're inside of
-    .enableSassLoader(function(sassOptions) {}, {
-        resolve_url_loader: false
-    })
 
     .enableSourceMaps(!Encore.isProduction())
 

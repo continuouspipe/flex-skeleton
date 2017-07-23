@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" {% if app.request.get('_route') == 'index' %}class="active"{% endif %}>
+                        <a href="{{ path('index') }}">Index</a>
+                    </li>
+                    <li role="presentation" {% if app.request.get('_route') == 'form' %}class="active"{% endif %}>
+                        <a href="{{ path('form') }}">Form</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Example</h3>
+        </div>
+
+        {% block container %}{% endblock container %}
+
+        <footer class="footer">
+            <p>&copy; 2017 Inviqa</p>
+        </footer>
+
+    </div>
+{% endblock body %}

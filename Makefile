@@ -47,8 +47,21 @@ serve:
 
 assets:
 	npx encore production
-.PHONY: assets
-
 watch-assets:
 	npx encore dev --watch
-.PHONY: watch-assets
+.PHONY: assets watch-assets
+
+test-js:
+	npx mocha-webpack --glob "*.test.js" assets/tests
+test-specs:
+	vendor/bin/phpspec run --format pretty
+test-integration:
+	vendor/bin/phpunit
+test-features:
+	vendor/bin/behat
+test:
+	@${MAKE} test-js
+	@${MAKE} test-specs
+	@${MAKE} test-integration
+	@${MAKE} test-features
+.PHONY: test-js test-spec test-integration test-features test
