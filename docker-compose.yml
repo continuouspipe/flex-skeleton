@@ -1,0 +1,19 @@
+version: '2'
+services:
+    database:
+        image: postgres
+        environment:
+            - POSTGRES_PASSWORD=app
+            - POSTGRES_USER=app
+            - POSTGRES_DB=app
+        expose:
+            - 5432
+    app:
+        build: .
+        environment:
+            - APP_ENV=dev
+            - APP_DEBUG=1
+            - APP_SECRET=eac4686b1d67ac5a3adfcbcce833e1c6
+            - 'DATABASE_URL=postgres://app:app@database/app'
+        expose:
+            - 80
