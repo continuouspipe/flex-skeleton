@@ -25,6 +25,13 @@ tasks:
             services:
                 database:
                     deployment_strategy: { readiness_probe: { type: tcp, port: 5432 } }
+    08_database_migrations:
+        run:
+           image:
+               from_service: app
+           commands: [ container migrate ]
+           environment_variables: [{ name: APP_ENV, value: '${APP_ENV?:dev}' }, { name: APP_DEBUG, value: '${APP_DEBUG?:1}' }, { name: APP_SECRET, value: '${APP_SECRET?:eac4686b1d67ac5a3adfcbcce833e1c6}' }, { name: DATABASE_URL, value: '${DATABASE_URL?:sqlite:///var/db.sqlite}' }]
+
     10_app_deployment:
         deploy:
             services:
