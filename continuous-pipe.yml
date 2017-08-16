@@ -1,17 +1,3 @@
-variables:
-    -
-        name: CLOUD_FLARE_ZONE
-        encrypted_value: CiQAVg9MBOGf5BsTpbzJZ0nYmxry5gMOsLibYusuUDeQpHx6kTcSSQCRAhz07YwbgU1+XupzAxRgIAAL7qgK/rs9pH887Kl/rFJv4APzEA5hmk8tOvJvYzA3rl54x9jyBD79OZs+oRGaAMbfDF34EtQ=
-    -
-        name: CLOUD_FLARE_EMAIL
-        encrypted_value: CiQAVg9MBNBwCKc12CBv0Xqk1DBD5QGzYzCYpo8mdT2xOkEuOXESPgCRAhz08lrnFfo0wNdVN0lj626lNNdzp9ep6iZou+I6je9tBopGRhqD7XoaOlcLXhFTYjw2uigZzQ2/sZ2j
-    -
-        name: CLOUD_FLARE_API_KEY
-        encrypted_value: CiQAVg9MBMEnA1bWana+n0cMyv1dqaF8iPNwKIY506+nVAWTrTsSTgCRAhz05psu4EGKIYUrP4XtEMFPiT3sLnS42GmLitaPyBHkLgSuA6AXHf8qNb31nvBC+c9d9dZ3StdYhY15S1IS8HhcPz12pfILRmqvhQ==
-defaults:
-    cluster: flex
-    environment:
-        name: '''26112db6-7059-11e7-8379-0a580a84016b-'' ~ code_reference.branch'
 tasks:
     00_images:
         build:
@@ -36,5 +22,6 @@ tasks:
         deploy:
             services:
                 app:
-                    endpoints: [{ name: app, cloud_flare_zone: { zone_identifier: '${CLOUD_FLARE_ZONE}', proxied: true, authentication: { email: '${CLOUD_FLARE_EMAIL}', api_key: '${CLOUD_FLARE_API_KEY}' } }, ingress: { class: nginx, host_suffix: '-gnwj3n-flex.continuouspipe.net' }, ssl_certificates: [{ name: automatic, cert: automatic, key: automatic }] }]
+                    endpoints: [{ name: app }]
                     deployment_strategy: { readiness_probe: { type: tcp, port: 80 } }
+
