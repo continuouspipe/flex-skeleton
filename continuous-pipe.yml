@@ -1,3 +1,6 @@
+defaults:
+    cluster: ${CLUSTER?:flex}
+
 tasks:
     00_images:
         build:
