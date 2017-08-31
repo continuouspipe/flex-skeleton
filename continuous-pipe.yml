@@ -1,5 +1,5 @@
 defaults:
-    cluster: ${CLUSTER?:flex}
+    cluster: managed # ${CLUSTER?:flex}
 
 tasks:
     00_images:
