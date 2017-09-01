@@ -25,6 +25,6 @@ tasks:
         deploy:
             services:
                 app:
-                    endpoints: [{ name: app, ingress: { host_suffix: 'poker-teststaging.continuouspipe.net' }}]
+                    endpoints: [{ name: app }]
                     deployment_strategy: { readiness_probe: { type: tcp, port: 80 } }
 
