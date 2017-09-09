@@ -1,5 +1,5 @@
 defaults:
-    cluster: managed # ${CLUSTER?:flex}
+    cluster: strava-de-france # managed # ${CLUSTER?:flex}
 
 tasks:
     00_images:
