@@ -1,5 +1,5 @@
 defaults:
-    cluster: strava-de-france # managed # ${CLUSTER?:flex}
+    cluster: cluster-continuous-pipe #  strava-de-france # managed # ${CLUSTER?:flex}
 
 tasks:
     00_images:
