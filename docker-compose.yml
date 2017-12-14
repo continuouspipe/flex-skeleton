@@ -17,3 +17,10 @@ services:
             - 'DATABASE_URL=postgres://app:app@database/app'
         expose:
             - 80
+
+    nginx:
+        build:
+            context: .
+            dockerfile: Dockerfile.nginx
+        expose: [ 80 ]
+

@@ -1,6 +1,11 @@
 defaults:
     cluster: cluster-continuous-pipe #  strava-de-france # managed # ${CLUSTER?:flex}
 
+variables:
+  COMMIT_SHA:
+    name: COMMIT_SHA
+    expression: code_reference.sha
+
 tasks:
     00_images:
         build:
@@ -9,6 +14,10 @@ tasks:
                     image: quay.io/continuouspipe-flex/flow-26112db6-7059-11e7-8379-0a580a84016b
                     naming_strategy: sha1
                     environment: [{ name: APP_ENV, value: '${APP_ENV?:dev}' }, { name: APP_DEBUG, value: '${APP_DEBUG?:1}' }, { name: APP_SECRET, value: '${APP_SECRET?:eac4686b1d67ac5a3adfcbcce833e1c6}' }, { name: DATABASE_URL, value: '${DATABASE_URL?:sqlite:///var/db.sqlite}' }]
+                nginx:
+                    image: quay.io/continuouspipe-flex/flow-26112db6-7059-11e7-8379-0a580a84016b
+                    tag: nginx-${COMMIT_SHA}
+
     05_database_deployment:
         deploy:
             services:
